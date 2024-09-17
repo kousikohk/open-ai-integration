@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="OpenAI Integration" icon-name="action:goal">
+        <div class="slds-var-m-around_medium">
+            <lightning-textarea
+                label="Enter a prompt"
+                placeholder="Type something to send to OpenAI..."
+                value={prompt}
+                onchange={handlePromptChange}>
+            </lightning-textarea>
+
+            <lightning-button label="Get OpenAI Response" onclick={handleSubmit} class="slds-m-top_medium"></lightning-button>
+
+            <!-- Show the response -->
+            <template if:true={response}>
+                <div class="slds-m-top_medium">
+                    <strong>Response from OpenAI:</strong>
+                    <pre>{response}</pre>
+                </div>
+            </template>
+
+            <!-- Show an error message if there is any error -->
+            <template if:true={error}>
+                <div class="slds-text-color_error slds-m-top_medium">
+                    <strong>Error:</strong> {error}
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
